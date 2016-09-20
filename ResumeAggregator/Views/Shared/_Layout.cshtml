@@ -18,11 +18,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home", new { area = "" }, null)</li>
+                    <li><a href="@Url.Action("Index","Home", new { area = "" })"><i class="fa fa-home fa-lg"></i></a></li>
+                    <li><a href="@Url.Action("RefreshData","Home", new { area = "" })" onclick="confirm('Обновить собранную базу резюме?')" ><i class="fa fa-refresh fa-lg"></i></a></li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>
@@ -32,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; 2016 - by <a href="mailto:souly17@gmail.com">Sergey Nikitin</a></p>
         </footer>
     </div>
 
