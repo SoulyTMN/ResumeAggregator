@@ -7,9 +7,9 @@ namespace ResumeAggregator.Models.E1
 {
     public class Category
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string title { get; set; }
-        public int count { get; set; } 
+        public int? count { get; set; } 
         public IList<Speciality> speciality { get; set; }
     }
 }

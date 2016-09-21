@@ -1,6 +1,7 @@
 ﻿using ResumeAggregator.Models.E1;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,12 @@ namespace ResumeAggregator.Models.Internal
 {
     public class InnerRecommendation
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int? CityId { get; set; }
         [ForeignKey("CityId")]
-        public City City { get; set; }
+        public InnerCity City { get; set; }
         public int? CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }

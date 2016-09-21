@@ -22,7 +22,6 @@ namespace ResumeAggregator.Models
 
         public static HttpResponseMessage ParseE1Resume(Resume resume)
         {
-            int idx;
             InnerCV innerCV = new InnerCV()
             {
                 Id = resume.id,
@@ -57,92 +56,136 @@ namespace ResumeAggregator.Models
                 WantedSalary = resume.wanted_salary,
                 WantedSalaryRub = resume.wanted_salary_rub,
                 WorkTimeTotalMonth = resume.work_time_total.month,
-                WorkTimeTotalYear = resume.work_time_total.year
-                /*,Cities
-                ,Citizenship
-                ,CitizenshipId
-                ,Contact
-                ,ContactId
-                ,Currency
-                ,CurrencyId
-                ,Education
-                ,EducationId
-                ,ExpirienceLength
-                ,ExpirienceLengthId
-                ,Institutions
-                ,Jobs
-                ,Photo
-                ,PhotoId
-                ,Recommendations
-                ,Rubrics
-                ,schedule
-                ,ScheduleId
-                ,SecondaryEducations
-                ,WorkingType
-                ,WorkingtypeId*/
+                WorkTimeTotalYear = resume.work_time_total.year,
+                Citizenship = resume.citizenship,
+                CitizenshipId = resume.citizenship?.id,
+                //Contact = resume.contact,
+                //ContactId = resume.contact?.id,
+                Currency = resume.currency,
+                CurrencyId = resume.currency?.id,
+                Education = resume.education,
+                EducationId = resume.education?.id,
+                ExpirienceLength = resume.expirience_length,
+                ExpirienceLengthId = resume.expirience_length?.id,
+                /*Photo = resume.photo,
+               PhotoId = resume.photo?.id,*/
+                schedule = resume.schedule,
+                ScheduleId = resume.schedule?.id,
+                WorkingType = resume.working_type,
+                WorkingtypeId = resume.working_type?.id
             };
 
             List<InnerCity> cities = new List<InnerCity>();
             foreach (City city in resume.cities_references)
             {
-                cities.Add(new InnerCity() { Id = city.id, Title = city.title, Locative = city.locative });
-            } 
+                cities.Add(ParseCity(city));
+            }
             innerCV.Cities = cities;
 
             List<InnerInstitutionCollection> institutions = new List<InnerInstitutionCollection>();
-            idx = 0;
             foreach (InstitutionCollection institution in resume.institutions)
             {
-                idx++;
-                institutions.Add(new InnerInstitutionCollection() {
-                    City =institution.city,
-                    CityId = institution.city.id,
+                institutions.Add(new InnerInstitutionCollection()
+                {
+                    City = ParseCity(institution.city),
+                    CityId = institution.city?.id,
                     DateFrom = institution.date.from.date,
                     DateTo = institution.date.to.date,
                     Faculty = institution.faculty,
-                    FacultyId = institution.faculty.id,
+                    FacultyId = institution.faculty?.id,
                     Form = institution.form,
-                    FormId = institution.form.id,
+                    FormId = institution.form?.id,
                     Speciality = institution.speciality,
-                    SpecialityId = institution.speciality.id,
-                    Id = idx
+                    SpecialityId = institution.speciality?.id
                 });
             }
             innerCV.Institutions = institutions;
 
             List<InnerJob> jobs = new List<InnerJob>();
-            idx = 0;
             foreach (Job job in resume.jobs)
             {
-                idx++;
                 jobs.Add(new InnerJob()
                 {
-                    City = job.city,
-                    CityId = job.city.id,
+                    City = ParseCity(job.city),
+                    CityId = job.city?.id,
                     DateFrom = job.date.from.date,
                     DateTo = job.date.to.date,
                     Company = job.company,
-                    CompanyId = job.company.id,
+                    CompanyId = job.company?.id,
                     Description = job.description,
                     IsStillWorking = job.isStillWorking,
                     Position = job.position,
-                    PositionId = job.position.id,
-                    Id = idx
+                    PositionId = job.position?.id
                 });
             }
             innerCV.Jobs = jobs;
 
+            List<InnerRecommendation> recommendations = new List<InnerRecommendation>();
+            foreach (Recommendation recommendation in resume.recommendations)
+            {
+                recommendations.Add(new InnerRecommendation()
+                {
+                    City = ParseCity(recommendation.city),
+                    CityId = recommendation.city?.id,
+                    Fullname = recommendation.fullname,
+                    Phone = recommendation.phone.phone,
+                    PhoneComment = recommendation.phone.comment,
+                    Company = recommendation.company,
+                    CompanyId = recommendation.company?.id,
+                    Position = recommendation.position,
+                    PositionId = recommendation.position?.id
 
+                });
+            }
+            innerCV.Recommendations = recommendations;
+
+            List<InnerRubric> rubrics = new List<InnerRubric>();
+            foreach (Rubric rubric in resume.rubrics)
+            {
+                if (rubric?.id != null)
+                    rubrics.Add(new InnerRubric()
+                    {
+                        id = rubric.id ?? 0,
+                        title = rubric.title
+                    });
+            }
+            innerCV.Rubrics = rubrics;
+
+            List<InnerSecondaryEducations> secondaryEducations = new List<InnerSecondaryEducations>();
+            foreach (SecondaryEducations se in resume.secondary_educations)
+            {
+                secondaryEducations.Add(new InnerSecondaryEducations()
+                {
+                    City = ParseCity(se.city),
+                    CityId = se.city?.id,
+                    CompanyName = se.company_name,
+                    CourseName = se.course_name,
+                    Date = se.finish_date.date
+
+                });
+            }
+            innerCV.SecondaryEducations = secondaryEducations;
+            
             using (var client = new HttpClient())
             {
-                string url = HttpContext.Current.Request.Url.AbsoluteUri;
-                client.BaseAddress = new Uri("http://localhost:34663/");
+                var request = HttpContext.Current.Request.Url;
+                string url = string.Format("{0}://{1}/", request.Scheme, request.Authority);
+                client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")); 
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 return client.PostAsJsonAsync("api/InnerResumes", innerCV).Result;
             }
 
         }
+
+        public static InnerCity ParseCity(City city)
+        {
+            if (city?.id == null)
+                return null;
+            else
+                return new InnerCity() { Id = city.id ?? 0, Title = city.title, Locative = city.locative };
+        }
+
     }
 }

@@ -7,7 +7,7 @@ namespace ResumeAggregator.Models.E1
 {
     public class Schedule
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string title { get; set; }
     }
 }

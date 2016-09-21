@@ -8,10 +8,10 @@ namespace ResumeAggregator.Models.E1
     public class Resume
     {
         public int id { get; set; }
-        public int owner_id { get; set; }
-        public int wanted_salary { get; set; }
-        public int wanted_salary_rub { get; set; }
-        public int age { get; set; }
+        public int? owner_id { get; set; }
+        public int? wanted_salary { get; set; }
+        public int? wanted_salary_rub { get; set; }
+        public int? age { get; set; }
         public string header { get; set; }
         public string personal_qualities { get; set; }
         public string institution { get; set; }
@@ -48,15 +48,15 @@ namespace ResumeAggregator.Models.E1
         public IList<Job> jobs { get; set; }
         public IList<Rubric> rubrics { get; set; }
         public IList<Recommendation> recommendations { get; set; }
-        public int state { get; set; }
-        public int validate_state { get; set; }
-        public int entity { get; set; }
+        public int? state { get; set; }
+        public int? validate_state { get; set; }
+        public int? entity { get; set; }
         public Contact contact { get; set; }
         public Photo photo { get; set; }
         public string salary { get; set; }
         public string info_short { get; set; }
         public string info { get; set; }
-        public int views { get; set; }
+        public int? views { get; set; }
         public string access_status { get; set; }
         public string access_due_date { get; set; }
         public string apiece_count { get; set; }
@@ -65,7 +65,7 @@ namespace ResumeAggregator.Models.E1
         public string is_deleted { get; set; }
         public string is_archived { get; set; }
         public string legacy { get; set; }
-        public int priority { get; set; }
+        public int? priority { get; set; }
         public string attachment { get; set; }
         public WorkTimeTotal work_time_total { get; set; }
         public IList<Subway> subways { get; set; }

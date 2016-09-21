@@ -7,7 +7,7 @@ namespace ResumeAggregator.Models.E1
 {
     public class Citizenship
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string title { get; set; }
     }
 }

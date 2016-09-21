@@ -9,7 +9,7 @@ namespace ResumeAggregator.Models.E1
     {
         public Query query { get; set; }
         public IList<Category> categories_facets { get; set; }
-        public int average_salary { get; set; }
+        public int? average_salary { get; set; }
         public IList<Deprecation> deprecations { get; set; }
         public ResultSet resultset { get; set; }
     }

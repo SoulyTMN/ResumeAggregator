@@ -8,7 +8,7 @@ namespace ResumeAggregator.Models.E1
 {
     public class DriverLicense
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         public string title { get; set; }
         public List<InnerCV> CVs { get; set; }
     }

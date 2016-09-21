@@ -7,7 +7,7 @@ namespace ResumeAggregator.Models.E1
 {
     public class WorkTimeTotal
     {
-        public int year { get; set; }
-        public int month { get; set; }
+        public int? year { get; set; }
+        public int? month { get; set; }
     }
 }

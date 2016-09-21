@@ -5,12 +5,12 @@ app.config(function ($mdThemingProvider) {
 });
 
 app.controller('ResumeController', function ($scope, ResumeService) {
-    $scope.sortType = 'Date';
+    $scope.sortType = 'AddDate';
     $scope.sortReverse = true;
 
     getResumes();
     function getResumes() {
-        TransactionsService.getTransactions()
+        ResumeService.getResumes()
         .success(function (trs) {
             $scope.resumes = trs;
         })
@@ -24,7 +24,7 @@ app.factory('ResumeService', ['$http', function ($http) {
     var ResumeService = {};
     ResumeService.getResumes = function () {
         var response = $http({
-            url: "api/InnerResumes",
+            url: "../api/InnerResumes",
             method: "GET"
         });
 

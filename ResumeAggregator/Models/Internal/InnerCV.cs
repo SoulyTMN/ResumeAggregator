@@ -11,9 +11,9 @@ namespace ResumeAggregator.Models.Internal
     {
         public int Id { get; set; }
         //public int OwnerId { get; set; } NOT USED
-        public int WantedSalary { get; set; }
-        public int WantedSalaryRub { get; set; }
-        public int Age { get; set; }
+        public int? WantedSalary { get; set; }
+        public int? WantedSalaryRub { get; set; }
+        public int? Age { get; set; }
         public string Header { get; set; }
         public string PersonalQualities { get; set; }
         public string Institution { get; set; }
@@ -26,15 +26,15 @@ namespace ResumeAggregator.Models.Internal
         public DateTime? AddDate { get; set; }
         public DateTime? ModDate { get; set; }
         public string Removal { get; set; }
-        public int IsDriver { get; set; }
-        public int IsJourney { get; set; }
-        public int IsSmoke { get; set; }
-        public int HasChild { get; set; }
+        public int? IsDriver { get; set; }
+        public int? IsJourney { get; set; }
+        public int? IsSmoke { get; set; }
+        public int? HasChild { get; set; }
         public string Sex { get; set; }
         public string MaritalStatus { get; set; }
-        public int SurnameHide { get; set; }
-        public int CanAcceptReplies { get; set; }
-        public int HideBirthday { get; set; }
+        public int? SurnameHide { get; set; }
+        public int? CanAcceptReplies { get; set; }
+        public int? HideBirthday { get; set; }
         //public string visibility_type { get; set; } NOT USED
         public int? EducationId { get; set; }
         [ForeignKey("EducationId")]
@@ -90,8 +90,8 @@ namespace ResumeAggregator.Models.Internal
         // public string legacy { get; set; } NOT USED
         //public int priority { get; set; } NOT USED
         //public string attachment { get; set; } NOT USED
-        public int WorkTimeTotalYear { get; set; }
-        public int WorkTimeTotalMonth { get; set; }
+        public int? WorkTimeTotalYear { get; set; }
+        public int? WorkTimeTotalMonth { get; set; }
         //public IList<Subway> subways { get; set; } NOT USED
         //public IList<District> districts { get; set; } NOT USED
         //public IList<string> tags { get; set; } NOT USED

@@ -1,4 +1,4 @@
-﻿function updateDatabase() {
+﻿function updateDatabaseDebug() {
     if (!confirm("Обновить базу резюме?")) {
         return;
     }
@@ -16,7 +16,7 @@
     });
 }
 
-function updateDatabaseFinal() {
+function updateDatabase() {
     if (!confirm("Обновить базу резюме?")) {
         return;
     }

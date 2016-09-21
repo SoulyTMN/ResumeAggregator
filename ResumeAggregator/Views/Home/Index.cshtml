@@ -1,6 +1,31 @@
 ﻿@section scripts{
     <script src="~/Scripts/angular_app.js"></script>
 }
+<br/>
 <div class="md-whiteframe-6dp" ng-app="app">
-
+    <div ng-controller="ResumeController" id="ResumesDiv" style="max-height:500px;">
+        <p>
+            <input type="text" placeholder="Поиск резюме" ng-model="searchResume" />
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    <a href="#" ng-click="sortType = 'AddDate'; sortReverse = !sortReverse">
+                        Дата добавления
+                        <i ng-show="sortType == 'Date' && !sortReverse" class="fa fa-caret-down"></i>
+                        <i ng-show="sortType == 'Date' && sortReverse" class="fa fa-caret-up"></i>
+                    </a>
+                </th>
+                <th>Заголовок</th>
+                <th>Информация</th>
+                <th>Ссылка на E1</th>
+            </tr>
+            <tr ng-repeat="r in resumes | filter : searchResume  | orderBy:sortType:sortReverse ">
+                <td>{{r.AddDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{r.Header}}</td>
+                <td>{{r.Info}}</td>
+                <td>{{r.Url}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
