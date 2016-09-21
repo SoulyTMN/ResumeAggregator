@@ -2,8 +2,8 @@
     <script src="~/Scripts/angular_app.js"></script>
 }
 <br/>
-<div class="md-whiteframe-6dp" ng-app="app">
-    <div ng-controller="ResumeController" id="ResumesDiv" style="max-height:500px;">
+<div class="md-whiteframe-6dp" ng-app="app" style="overflow-y:auto; max-height:450px;">
+    <div ng-controller="ResumeController" id="ResumesDiv" >
         <p>
             <input type="text" placeholder="Поиск резюме" ng-model="searchResume" />
         </p>
@@ -21,10 +21,10 @@
                 <th>Ссылка на E1</th>
             </tr>
             <tr ng-repeat="r in resumes | filter : searchResume  | orderBy:sortType:sortReverse ">
-                <td>{{r.AddDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{r.AddDate | date:'yyyy-MM-dd'}}</td>
                 <td>{{r.Header}}</td>
                 <td>{{r.Info}}</td>
-                <td>{{r.Url}}</td>
+                <td><a href="https://ekb.zarplata.ru{{r.Url}}"><i class="fa fa-link"></i></td>
             </tr>
         </table>
     </div>
