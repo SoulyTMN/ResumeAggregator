@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,14 @@ namespace ResumeAggregator.Models
     
         public ResumeAggregatorContext() : base("name=ResumeAggregatorContext")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public System.Data.Entity.DbSet<ResumeAggregator.Models.E1.Education> Educations { get; set; }
@@ -65,6 +74,6 @@ namespace ResumeAggregator.Models
         public System.Data.Entity.DbSet<ResumeAggregator.Models.Internal.InnerRecommendation> InnerRecommendations { get; set; }
 
         public System.Data.Entity.DbSet<ResumeAggregator.Models.Internal.InnerCV> InnerCVs { get; set; }
-        
+
     }
 }

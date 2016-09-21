@@ -82,9 +82,28 @@ namespace ResumeAggregator.Controllers
             }
 
             db.InnerCVs.Add(innerResume);
-            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = innerResume.Id }, innerResume);
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (InnerResumeExists(innerResume.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok(innerResume);
         }
 
         // DELETE: api/InnerResumes/5

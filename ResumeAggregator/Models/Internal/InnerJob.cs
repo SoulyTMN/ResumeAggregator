@@ -12,13 +12,13 @@ namespace ResumeAggregator.Models.Internal
         public int Id { get; set; }
         public string DateFrom { get; set; }
         public string DateTo { get; set; }
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
         [ForeignKey("CityId")]
         public City City { get; set; }
-        public int PositionId { get; set; }
+        public int? PositionId { get; set; }
         [ForeignKey("PositionId")]
         public Position Position { get; set; }
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public Company Company { get; set; }
         public string Description { get; set; }

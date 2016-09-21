@@ -10,16 +10,16 @@ namespace ResumeAggregator.Models.Internal
     public class InnerInstitutionCollection
     {
         public int Id { get; set; }
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
         [ForeignKey("CityId")]
         public City City { get; set; }
-        public int FormId { get; set; }
+        public int? FormId { get; set; }
         [ForeignKey("FormId")]
         public Form Form { get; set; }
-        public int FacultyId { get; set; }
+        public int? FacultyId { get; set; }
         [ForeignKey("FacultyId")]
         public Faculty Faculty { get; set; }
-        public int SpecialityId { get; set; }
+        public int? SpecialityId { get; set; }
         [ForeignKey("SpecialityId")]
         public Speciality Speciality { get; set; }
         public string DateFrom { get; set; }

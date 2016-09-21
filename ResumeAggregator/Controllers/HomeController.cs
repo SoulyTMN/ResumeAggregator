@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ResumeAggregator.Models;
 using ResumeAggregator.Models.E1;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,24 @@ namespace ResumeAggregator.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-            
+            ViewBag.Title = "Агрегатор резюме";
+
             return View();
         }
-
-        //GET:https://ekb.zarplata.ru/api/v1/resumes/?state%5B%5D=1&visibility_type=1&average_salary=true&categories_facets=1&city_id=994&entity=1&geo_id%5B%5D=994&rubric_id%5B%5D=50&search_type=fullThrottle&limit=25&offset=0&fields=add_date%2Cmod_date%2Cage_pretty%2Cattachment%2Cbirthday%2Ccontact%2Ceducation%2Ceducation_specialty%2Cexperience%2Cexperience_length%2Cexperience_prune%2Cheader%2Cid%2Cinfo%2Cis_upped%2Cis_journey%2Cjobs%2Cowner_id%2Cphoto%2Csalary%2Cstate%2Curl%2Cvalidate_state%2Cviews%2Chide_birthday%2Csex
-        //public string GetE1JSON
+        public string RefreshData(string jsonResponse)
+        {
+            try
+            {
+                E1CV cv = DeserializeCV(jsonResponse); //JsonConvert.DeserializeObject<E1CV>(jsonResponse);
+                E1toInternalSaveHelper.ParseE1(cv);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            return "База успешно обновлена!";
+        }
+        
         public static E1CV DeserializeCV(string json)
         {
         json = @"

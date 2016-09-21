@@ -15,15 +15,15 @@ namespace ResumeAggregator.Models.E1
         public string street { get; set; }
         public string building { get; set; }
         public string room { get; set; }
-        public int SubwayId { get; set; }
+        public int? SubwayId { get; set; }
         [ForeignKey("SubwayId")]
         public Subway subway { get; set; }
-        public int DistrictId { get; set; }
+        public int? DistrictId { get; set; }
         [ForeignKey("DistrictId")]
         public District district { get; set; }
         public string address_description { get; set; }
         public string address { get; set; }
-        public int CityId { get; set; }
+        public int? CityId { get; set; }
         [ForeignKey("CityId")]
         public City city { get; set; }
         public string icq { get; set; }

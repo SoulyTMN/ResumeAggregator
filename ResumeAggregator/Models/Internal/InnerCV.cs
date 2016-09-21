@@ -36,22 +36,22 @@ namespace ResumeAggregator.Models.Internal
         public int CanAcceptReplies { get; set; }
         public int HideBirthday { get; set; }
         //public string visibility_type { get; set; } NOT USED
-        public int EducationId { get; set; }
+        public int? EducationId { get; set; }
         [ForeignKey("EducationId")]
-        public Education education { get; set; }
-        public int WorkingtypeId { get; set; }
+        public Education Education { get; set; }
+        public int? WorkingtypeId { get; set; }
         [ForeignKey("WorkingtypeId")]
         public WorkingType WorkingType { get; set; }
-        public int ScheduleId { get; set; }
+        public int? ScheduleId { get; set; }
         [ForeignKey("ScheduleId")]
         public Schedule schedule { get; set; }
-        public int CurrencyId { get; set; }
+        public int? CurrencyId { get; set; }
         [ForeignKey("CurrencyId")]
         public Currency Currency { get; set; }
-        public int ExpirienceLengthId { get; set; }
+        public int? ExpirienceLengthId { get; set; }
         [ForeignKey("ExpirienceLengthId")]
         public ExperienceLength ExpirienceLength { get; set; }
-        public int CitizenshipId { get; set; }
+        public int? CitizenshipId { get; set; }
         [ForeignKey("CitizenshipId")]
         public Citizenship Citizenship { get; set; }
 
@@ -63,14 +63,14 @@ namespace ResumeAggregator.Models.Internal
 
         public IList<InnerSecondaryEducations> SecondaryEducations { get; set; }
         public IList<InnerInstitutionCollection> Institutions { get; set; }
-        public IList<InnerJob> jobs { get; set; }
-        public IList<InnerRubric> rubrics { get; set; }
-        public IList<InnerRecommendation> recommendations { get; set; }
+        public IList<InnerJob> Jobs { get; set; }
+        public IList<InnerRubric> Rubrics { get; set; }
+        public IList<InnerRecommendation> Recommendations { get; set; }
 
         //public int state { get; set; } NOT USED
         //public int validate_state { get; set; } NOT USED
         //public int entity { get; set; } NOT USED
-        public int ContactId { get; set; }
+        public int? ContactId { get; set; }
         [ForeignKey("ContactId")]
         public Contact Contact { get; set; }
         public string PhotoId { get; set; }
@@ -96,8 +96,8 @@ namespace ResumeAggregator.Models.Internal
         //public IList<District> districts { get; set; } NOT USED
         //public IList<string> tags { get; set; } NOT USED
         //public string imported_via { get; set; } NOT USED
-        public string url_doc { get; set; }
-        public string url_pdf { get; set; }
+        public string UrlDoc { get; set; }
+        public string UrlPdf { get; set; }
         //public IList<int> contact_geo_ids { get; set; } NOT USED
         //public LastLogin last_log { get; set; } NOT USED
         //public string favorite { get; set; } NOT USED

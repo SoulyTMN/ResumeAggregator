@@ -11,6 +11,9 @@ namespace ResumeAggregator
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-1.11.1.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/layout").Include(
+                        "~/Scripts/layout.js"));
+
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(

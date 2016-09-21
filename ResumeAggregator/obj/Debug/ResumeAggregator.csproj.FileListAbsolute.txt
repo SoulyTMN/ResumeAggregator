@@ -41,10 +41,13 @@ c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\Resum
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\System.Web.WebPages.Deployment.xml
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\System.Web.WebPages.Razor.xml
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\Antlr3.Runtime.pdb
-c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.csprojResolveAssemblyReference.cache
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.dll
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.pdb
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\EntityFramework.dll
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\EntityFramework.SqlServer.dll
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\EntityFramework.xml
 c:\users\nikitin-sv\documents\visual studio 2015\Projects\ResumeAggregator\ResumeAggregator\bin\EntityFramework.SqlServer.xml
+C:\Users\Nikitin-SV\Documents\Visual Studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.csprojResolveAssemblyReference.cache
+C:\Users\Nikitin-SV\Documents\Visual Studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.Migrations.Initial.resources
+C:\Users\Nikitin-SV\Documents\Visual Studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.csproj.GenerateResource.Cache
+C:\Users\Nikitin-SV\Documents\Visual Studio 2015\Projects\ResumeAggregator\ResumeAggregator\obj\Debug\ResumeAggregator.Migrations.Nullables.resources
